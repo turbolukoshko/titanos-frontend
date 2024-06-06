@@ -1,0 +1,37 @@
+.horizontal-list__card {
+  margin: 10px;
+  transition: transform 0.3s ease-in-out;
+
+  &.focused {
+    transform: scale(1.1);
+
+    .horizontal-list__card-title {
+      visibility: visible;
+    }
+
+    .horizontal-list__card-image-container {
+      border-color: white;
+    }
+  }
+
+  &-image {
+    width: 100%;
+    object-fit: contain;
+    &-container {
+      border-radius: 10px;
+      border: 2px solid transparent;
+      width: 200px;
+      height: 280px;
+      overflow: hidden;
+    }
+  }
+
+  &-title {
+    position: absolute;
+    visibility: hidden;
+    left: 5%;
+    width: 100vw;
+    text-align: start;
+    margin: 6px 0 0 0;
+  }
+}
