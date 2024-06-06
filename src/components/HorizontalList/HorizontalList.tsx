@@ -13,7 +13,7 @@ export const HorizontalList: FC<HorizontalListProps> = ({
   const newTranslateX = -(focusIndex * cardBorderBox - previousCardWidth);
   const isFirstLoad = focusIndex === 0;
 
-  const handleKeyDown = useCallback(
+  const pressKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") {
         setFocusIndex((prevIndex) =>
@@ -29,11 +29,11 @@ export const HorizontalList: FC<HorizontalListProps> = ({
   );
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", pressKeyDown);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", pressKeyDown);
     };
-  }, [handleKeyDown]);
+  }, [pressKeyDown]);
 
   useEffect(() => {
     setTranslateX(isFirstLoad ? 0 : newTranslateX);
