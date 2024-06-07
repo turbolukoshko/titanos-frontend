@@ -6,7 +6,7 @@ import { api_url } from "../../consts/api";
 interface ListState {
   items: MovieList | null;
   status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null | undefined;
+  error: string | null;
 }
 
 const initialState: ListState = {
@@ -28,16 +28,18 @@ const movieSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchMovieList.pending, (state) => {
-      state.status = "loading";
-    });
-    builder.addCase(fetchMovieList.fulfilled, (state, action) => {
-      (state.status = "succeeded"), (state.items = action.payload);
-    });
-    builder.addCase(fetchMovieList.rejected, (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
-    });
+    builder
+      .addCase(fetchMovieList.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchMovieList.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.items = action.payload;
+      })
+      .addCase(fetchMovieList.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message ?? "Something went wrong";
+      });
   },
 });
 

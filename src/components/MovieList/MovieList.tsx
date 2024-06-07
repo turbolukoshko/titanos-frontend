@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { MovieListProps } from "./types";
+import "./MovieList.scss";
 
 export const MovieList: FC<MovieListProps> = ({
   translateX,
@@ -20,12 +21,12 @@ export const MovieList: FC<MovieListProps> = ({
         } = movie;
         return (
           <MovieCard
+            key={id}
             index={index}
             id={id}
             title={title}
             imageSrc={artwork_portrait}
             focusIndex={focusIndex}
-            key={movie.id}
           />
         );
       })}

@@ -9,7 +9,6 @@ context('Connectors', () => {
     // https://on.cypress.io/each
     cy.get('.horizontal-list-container>ul')
       .each(($el, index, $list) => {
-        console.log($el, index, $list)
       })
   })
 
